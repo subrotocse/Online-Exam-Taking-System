@@ -15,21 +15,29 @@ namespace OnlineExams.BLL
         {
             return _courseRepository.Add(entity);
         }
-        public bool Remove(Course entity)
-        {
-            return _courseRepository.Remove(entity);
-        }
+
+       
         public bool Update(Course entity)
         {
             return _courseRepository.Update(entity);
         }
+
+
         public List<Course> GetAll()
         {
             return _courseRepository.GetAll();
         }
+
+
         public Course GetById(int? id)
         {
             return _courseRepository.GetById(id);
+        }
+
+
+        public bool Remove(Course entity)
+        {
+            return _courseRepository.Remove(entity);
         }
     }
 }
