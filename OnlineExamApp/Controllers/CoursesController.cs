@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using OnlineExams.BLL;
 using OnlineExams.DataContext;
 using OnlineExams.Models;
+using OnlineExams.Models.ViewModels;
 
 namespace OnlineExamApp.Controllers
 {
@@ -16,6 +17,7 @@ namespace OnlineExamApp.Controllers
     {
         private OnlineExamDbContext db = new OnlineExamDbContext();
         CourseManager _courseManager = new CourseManager();
+
         // GET: Courses
         public ActionResult Index()
         {
@@ -42,8 +44,19 @@ namespace OnlineExamApp.Controllers
         // GET: Courses/Create
         public ActionResult Create()
         {
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name");
-            return View();
+            //ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name");
+            TagManager _tag = new TagManager();
+            OrganizationManager _org = new OrganizationManager();
+            var tags = _tag.GetAll();
+            var orgs = _org.GetAll();
+
+            var viewModel = new CourseWithOrgAndTagVM();
+
+            viewModel.Tags = tags.ToList();
+            viewModel.Organizations = orgs.ToList();
+                
+            
+            return View(viewModel);
         }
 
         // POST: Courses/Create
