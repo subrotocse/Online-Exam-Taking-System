@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using OnlineExams.BLL;
 using OnlineExams.DataContext;
 using OnlineExams.Models;
 
@@ -14,7 +16,7 @@ namespace OnlineExamApp.Controllers
     public class TrainersController : Controller
     {
         private OnlineExamDbContext db = new OnlineExamDbContext();
-
+        TrainerManager _trainerManger = new TrainerManager();
         // GET: Trainers
         public ActionResult Index()
         {
@@ -29,7 +31,8 @@ namespace OnlineExamApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Trainer trainer = db.Trainers.Find(id);
+            //Trainer trainer = db.Trainers.Find(id);
+            Trainer trainer = _trainerManger.GetById(id);
             if (trainer == null)
             {
                 return HttpNotFound();
@@ -49,19 +52,29 @@ namespace OnlineExamApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,ContactNo,Email,AddressLine1,AddressLine2,City,PostalCode,Country,Image,LeadTrainer,OrganizationId")] Trainer trainer)
+        public ActionResult Create(Trainer trainer)
         {
             if (ModelState.IsValid)
             {
-                db.Trainers.Add(trainer);
-                db.SaveChanges();
+                AddImages(trainer);
+                _trainerManger.Add(trainer);
+                //db.Trainers.Add(trainer);
+                //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name", trainer.OrganizationId);
             return View(trainer);
         }
-
+        public void AddImages(Trainer trainer)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(trainer.Logo.FileName);
+            string extension = Path.GetExtension(trainer.Logo.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            trainer.ImagePath = "/Images/" + fileName;
+            fileName = Path.Combine(Server.MapPath("/Images/"), fileName);
+            trainer.Logo.SaveAs(fileName);
+        }
         // GET: Trainers/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -69,7 +82,8 @@ namespace OnlineExamApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Trainer trainer = db.Trainers.Find(id);
+            //Trainer trainer = db.Trainers.Find(id);
+            Trainer trainer = _trainerManger.GetById(id);
             if (trainer == null)
             {
                 return HttpNotFound();
@@ -87,8 +101,9 @@ namespace OnlineExamApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(trainer).State = EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(trainer).State = EntityState.Modified;
+                //db.SaveChanges();
+                _trainerManger.Update(trainer);
                 return RedirectToAction("Index");
             }
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name", trainer.OrganizationId);
@@ -102,7 +117,8 @@ namespace OnlineExamApp.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Trainer trainer = db.Trainers.Find(id);
+            //Trainer trainer = db.Trainers.Find(id);
+            Trainer trainer = _trainerManger.GetById(id);
             if (trainer == null)
             {
                 return HttpNotFound();
@@ -115,9 +131,11 @@ namespace OnlineExamApp.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Trainer trainer = db.Trainers.Find(id);
-            db.Trainers.Remove(trainer);
-            db.SaveChanges();
+            //Trainer trainer = db.Trainers.Find(id);
+            //db.Trainers.Remove(trainer);
+            //db.SaveChanges();
+            Trainer trainer = _trainerManger.GetById(id);
+            _trainerManger.Remove(trainer);
             return RedirectToAction("Index");
         }
 

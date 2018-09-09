@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -52,11 +53,13 @@ namespace OnlineExamApp.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Org_Name,Org_Code,Address,ContactNo,About,Logo")] Organization organization)
+        public ActionResult Create( Organization organization)
         {
             if (ModelState.IsValid)
             {
+                AddImages(organization);
                 _organizationManager.Add(organization);
+                
                 //db.Organizations.Add(organization);
                 //db.SaveChanges();
                 return RedirectToAction("Index");
@@ -64,7 +67,15 @@ namespace OnlineExamApp.Controllers
 
             return View(organization);
         }
-
+        public void AddImages(Organization organization)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(organization.Logo.FileName);
+            string extension = Path.GetExtension(organization.Logo.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            organization.ImagePath = "/Images/" + fileName;
+            fileName = Path.Combine(Server.MapPath("/Images/"), fileName);
+            organization.Logo.SaveAs(fileName);
+        }
         // GET: Organizations/Edit/5
         public ActionResult Edit(int? id)
         {

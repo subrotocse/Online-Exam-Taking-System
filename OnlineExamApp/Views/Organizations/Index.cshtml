@@ -29,6 +29,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Logo)
         </th>
+        <th>
+            @Html.DisplayName("Trainers")
+        </th>
         <th></th>
     </tr>
 
@@ -49,13 +52,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.About)
         </td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.Logo)
+            <img src="@Url.Content(item.ImagePath)" width="100" height="100" multiple />
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayFor(modelItem => item.Trainers.Count)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
