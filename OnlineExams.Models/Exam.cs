@@ -16,8 +16,7 @@ namespace OnlineExams.Models
        
         public int CourseId { get; set; }
         public virtual Course Course { get; set; }
-       
-        public int OrganizationId { get; set; }
-        public virtual Organization Organization { get; set; }
+        public virtual List<ExamSchedule> ExamSchedules { get; set; } 
+
     }
 }

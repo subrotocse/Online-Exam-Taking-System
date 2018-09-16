@@ -42,13 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Batch.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="CourseTag.cs" />
+    <Compile Include="CourseTrainer.cs" />
     <Compile Include="Exam.cs" />
+    <Compile Include="ExamSchedule.cs" />
     <Compile Include="Organization.cs" />
+    <Compile Include="Participant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="Trainer.cs" />
-    <Compile Include="ViewModels\CourseWithOrgAndTagVM.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

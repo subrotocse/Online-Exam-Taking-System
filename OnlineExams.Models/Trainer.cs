@@ -16,14 +16,14 @@ namespace OnlineExams.Models
         public string AddressLine2 { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
-        public string Country { get; set; }
-       
+        public string Country { get; set; }       
         public bool LeadTrainer { get; set; }
         public int OrganizationId { get; set; }
+        public virtual Organization Organization { get; set; }
         public string ImagePath { get; set; }
         [NotMapped]
         public HttpPostedFileBase Logo { get; set; }
-        public virtual Organization Organization { get; set; }
-        public virtual List<Course> Courses { get; set; } 
+       
+        public virtual List<CourseTrainer> CourseTrainers { get; set; } 
     }
 }

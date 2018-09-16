@@ -16,30 +16,31 @@ namespace OnlineExams.DataContext
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<Trainer> Trainers { get; set; }
         public DbSet<Tag> Tags { get; set; }
-       
+        public DbSet<Batch> Batches { get; set; }
+        public DbSet<Participant> Participants { get; set; }
+        public DbSet<CourseTag> CourseTags { get; set; }
+        public DbSet<CourseTrainer> CourseTrainers { get; set; }
+        public DbSet<ExamSchedule> ExamSchedules { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>();
 
+            //'FK_dbo.Participants_dbo.Organizations_OrganizationId' on table 'Trainers' may cause cycles or multiple cascade paths
+
             modelBuilder.Entity<Organization>()
-          .HasMany<Exam>(g => g.Exams)
-          .WithRequired(s => s.Organization)
-          .WillCascadeOnDelete(false);
+        .HasMany<Trainer>(g => g.Trainers)
+        .WithRequired(s => s.Organization)
+        .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Course>()
-             .HasMany(c => c.Trainers).WithMany(i => i.Courses)
-             .Map(t => t.MapLeftKey("CourseID")
-                 .MapRightKey("TrainerId")
-                 .ToTable("CourseTrainer"));
-
-            modelBuilder.Entity<Course>()
-             .HasMany(c => c.Tags).WithMany(i => i.Courses)
-             .Map(t => t.MapLeftKey("CourseID")
-                 .MapRightKey("TagID")
-                 .ToTable("CourseTag"));
+            //FK_dbo.ExamSchedules_dbo.Exams_ExamId' on table 'ExamSchedules' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION,
+            modelBuilder.Entity<Exam>()
+         .HasMany<ExamSchedule>(g => g.ExamSchedules)
+         .WithRequired(s => s.Exam)
+         .WillCascadeOnDelete(false);
         }
 
     }
 }
-    
+
 

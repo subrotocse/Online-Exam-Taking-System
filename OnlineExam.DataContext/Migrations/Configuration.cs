@@ -1,4 +1,4 @@
-namespace OnlineExams.DataContext.Migrations
+namespace OnlineExam.DataContext.Migrations
 {
     using System;
     using System.Data.Entity;

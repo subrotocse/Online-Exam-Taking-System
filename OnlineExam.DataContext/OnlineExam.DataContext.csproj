@@ -47,17 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201809051930009_Initial.cs" />
-    <Compile Include="Migrations\201809051930009_Initial.Designer.cs">
-      <DependentUpon>201809051930009_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809081855144_New_Property_add_in_Organization.cs" />
-    <Compile Include="Migrations\201809081855144_New_Property_add_in_Organization.Designer.cs">
-      <DependentUpon>201809081855144_New_Property_add_in_Organization.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201809081953216_New_Property_add_in_Trainer_For_Image.cs" />
-    <Compile Include="Migrations\201809081953216_New_Property_add_in_Trainer_For_Image.Designer.cs">
-      <DependentUpon>201809081953216_New_Property_add_in_Trainer_For_Image.cs</DependentUpon>
+    <Compile Include="Migrations\201809160952197_Initial.cs" />
+    <Compile Include="Migrations\201809160952197_Initial.Designer.cs">
+      <DependentUpon>201809160952197_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineExamDbContext.cs" />
@@ -74,14 +66,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201809051930009_Initial.resx">
-      <DependentUpon>201809051930009_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809081855144_New_Property_add_in_Organization.resx">
-      <DependentUpon>201809081855144_New_Property_add_in_Organization.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201809081953216_New_Property_add_in_Trainer_For_Image.resx">
-      <DependentUpon>201809081953216_New_Property_add_in_Trainer_For_Image.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201809160952197_Initial.resx">
+      <DependentUpon>201809160952197_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
