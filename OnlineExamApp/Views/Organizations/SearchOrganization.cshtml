@@ -1,0 +1,118 @@
+﻿@model IEnumerable<OnlineExams.Models.Organization>
+
+@{
+    ViewBag.Title = "SearchOrganization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>SearchOrganization</h3>
+<br />
+<form method="post">
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("Org_Name", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.Editor("Org_Name", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("Org_Name", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("Address", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.Editor("Address", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("Address", "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("Org_Code", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.Editor("Org_Code", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("Org_Code", "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                @Html.Label("ContactNo", htmlAttributes: new { @class = "control-label col-md-1" })
+                @Html.Editor("ContactNo", new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessage("ContactNo", "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class=" col-md-offset-5">
+            <input type="submit" value="Search" class="btn btn-default" />
+        </div>
+    </div>
+
+</form>
+<br />
+<br />
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Org_Name)
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Org_Code)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNo)
+        </th>
+        <th>
+            @Html.DisplayName("Courses")
+        </th>
+        <th>
+            @Html.DisplayName("Action")
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Logo)
+            </th>
+            <th>
+                @Html.DisplayName("Trainers")
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Org_Name)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Org_Code)
+                </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Courses.Count)
+            </td>
+
+            @*<td>
+                    <img src="@Url.Content(item.ImagePath)" width="100" height="100" multiple />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Trainers.Count)
+                </td>*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

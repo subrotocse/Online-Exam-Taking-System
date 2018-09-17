@@ -10,3 +10,9 @@ E:\DOT NET\BITM Professional ASP.NET MVC\ProMvc Project Github File\Online-Exam-
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMvc Project Github File\Online-Exam-Taking-System\OnlineExams.Models\obj\Debug\OnlineExams.Models.csproj.CoreCompileInputs.cache
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMvc Project Github File\Online-Exam-Taking-System\OnlineExams.Models\obj\Debug\OnlineExams.Models.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMvc Project Github File\Online-Exam-Taking-System\OnlineExams.Models\obj\Debug\OnlineExams.Models.pdb
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExams.Models\bin\Debug\OnlineExams.Models.dll
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExams.Models\bin\Debug\OnlineExams.Models.pdb
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExams.Models\obj\Debug\OnlineExams.Models.csprojAssemblyReference.cache
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExams.Models\obj\Debug\OnlineExams.Models.csproj.CoreCompileInputs.cache
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExams.Models\obj\Debug\OnlineExams.Models.dll
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExams.Models\obj\Debug\OnlineExams.Models.pdb
