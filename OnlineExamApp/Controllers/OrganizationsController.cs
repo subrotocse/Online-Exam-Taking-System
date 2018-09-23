@@ -100,8 +100,8 @@ namespace OnlineExamApp.Controllers
             return View(organizations);
         }
         //public JsonResult GetOrganizationCode(string org_code)
-        //{
-        //    var orgCode = db.Organizations.Where(x => x.Org_Code.Contains(org_code));
+        ////{
+        //    var orgCode = db.Organizations.Select(c => c.Org_Code);
         //    return Json(orgCode, JsonRequestBehavior.AllowGet);
         //}
         // GET: Organizations/Edit/5

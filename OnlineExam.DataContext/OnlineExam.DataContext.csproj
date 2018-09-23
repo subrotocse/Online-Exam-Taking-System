@@ -51,6 +51,10 @@
     <Compile Include="Migrations\201809160952197_Initial.Designer.cs">
       <DependentUpon>201809160952197_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809181947243_Add_CourseTrainer.cs" />
+    <Compile Include="Migrations\201809181947243_Add_CourseTrainer.Designer.cs">
+      <DependentUpon>201809181947243_Add_CourseTrainer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineExamDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +72,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809160952197_Initial.resx">
       <DependentUpon>201809160952197_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809181947243_Add_CourseTrainer.resx">
+      <DependentUpon>201809181947243_Add_CourseTrainer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

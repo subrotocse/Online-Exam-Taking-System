@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Course Name</h2>
 
 
 @using (Html.BeginForm())
@@ -12,10 +12,11 @@
     @Html.AntiForgeryToken()
     
 <div class="form-horizontal">
-    <h4>Course</h4>
-    <div>
+  
+    <div class="col-md-offset-9">
         @Html.ActionLink("< Search", "Index")
     </div><hr />
+    <h3>Course Update</h3>
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.Id)
     <div class="form-group">

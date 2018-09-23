@@ -7,14 +7,42 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Trainer</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.OrganizationId, "OrganizationId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("OrganizationId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.OrganizationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("BatchId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("BatchId", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.LeadTrainer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.LeadTrainer)
+                    @Html.ValidationMessageFor(model => model.LeadTrainer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -80,34 +108,15 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LeadTrainer, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Image", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.LeadTrainer)
-                    @Html.ValidationMessageFor(model => model.LeadTrainer, "", new { @class = "text-danger" })
+                <input type="file" name="Logo" required>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.OrganizationId, "OrganizationId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("OrganizationId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.OrganizationId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImagePath, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -118,5 +127,80 @@
 </div>
 
 @section Scripts {
+    @*@*<script src="~/Scripts/jquery-3.3.1.js"></script>*@
+
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //1. on course dropdown chage ->
+            $('#OrganizationId').change(function () {
+                //request for Course/GetTraineeBy?courseid=courseDD value
+                var organizationid = $('#OrganizationId').val();
+                var data = { organizationId: organizationid };
+                $.ajax({
+                    type: "POST",
+                    url: "/trainers/getCourse",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    success: function (response) {
+                        var courseDropDown = $('#CourseId');
+                        courseDropDown.empty();
+                        var defaultOption = "<option value=''>....Select...</option>";
+                        courseDropDown.append(defaultOption);
+
+                        $.each(response, function (key, course) {
+                            var option = "<option value='" + course.Id + "'>" + course.Name + "</option>";
+                            courseDropDown.append(option);
+                        });
+
+                    },
+                    error: function (response) {
+                        alert("Error!");
+                    }
+                });
+
+            })
+
+
+            //2. get json response and bind data in trainee dropdown
+
+        });
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //1. on course dropdown chage ->
+            $('#CourseId').change(function () {
+                //request for Course/GetTraineeBy?courseid=courseDD value
+                var courseid = $('#CourseId').val();
+                var data = { courseId: courseid };
+                $.ajax({
+                    type: "POST",
+                    url: "/trainers/getBatch",
+                    data: JSON.stringify(data),
+                    contentType: "application/json",
+                    success: function (response) {
+                        var batchDropDown = $('#BatchId');
+                        batchDropDown.empty();
+                        var defaultOption = "<option value=''>....Select...</option>";
+                        batchDropDown.append(defaultOption);
+
+                        $.each(response, function (key, batch) {
+                            var option = "<option value='" + batch.Id + "'>" + batch.BatchNo + "</option>";
+                            batchDropDown.append(option);
+                        });
+
+                    },
+                    error: function (response) {
+                        alert("Error!");
+                    }
+                });
+
+            })
+
+
+            //2. get json response and bind data in trainee dropdown
+
+        });
+    </script>
+
 }
