@@ -6,15 +6,17 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using OnlineExams.BLL;
 using OnlineExams.DataContext;
 using OnlineExams.Models;
+using OnlineExams.Models.View_Model;
 
 namespace OnlineExamApp.Controllers
 {
     public class CoursesController : Controller
     {
         private OnlineExamDbContext db = new OnlineExamDbContext();
-
+        CourseTrainerManager courseTrainerManager = new CourseTrainerManager();
         // GET: Courses
         public ActionResult Index()
         {
@@ -55,12 +57,12 @@ namespace OnlineExamApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Courses.Add(course);
-               bool IsSaved= db.SaveChanges()>0;
-                if(IsSaved)
+                bool IsSaved = db.SaveChanges() > 0;
+                if (IsSaved)
                 {
-                    return RedirectToAction("Edit",new {@id=course.Id});
+                    return RedirectToAction("Edit", new { @id = course.Id });
                 }
-                
+
             }
 
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name", course.OrganizationId);
@@ -70,17 +72,26 @@ namespace OnlineExamApp.Controllers
         // GET: Courses/Edit/5
         public ActionResult Edit(int? id)
         {
+
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Course course = db.Courses.Find(id);
+            //ViewBag.Name = course.Name;
+
             if (course == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name", course.OrganizationId);
-            return View(course);
+            //ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name", course.OrganizationId);
+            var courseEdit = AutoMapper.Mapper.Map<CourseEditVM>(course);
+            //courseEdit.Name = course.Name;
+            courseEdit.OrganizationLookUps = db.Organizations.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Org_Name }).ToList();
+            courseEdit.TrainerLookUps = db.Trainers.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
+            courseEdit.CourseLookUps = db.Courses.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
+            return View(courseEdit);
         }
 
         // POST: Courses/Edit/5
@@ -89,18 +100,39 @@ namespace OnlineExamApp.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,CourseCode,CourseDuration,Credit,CourseOutLine,OrganizationId")] Course course)
+        public ActionResult Edit([Bind(Include = "Id,Name,CourseCode,CourseDuration,Credit,CourseOutLine,OrganizationId")] CourseEditVM course)
         {
+
             if (ModelState.IsValid)
             {
-                db.Entry(course).State = EntityState.Modified;
+
+                var entity = AutoMapper.Mapper.Map<Course>(course);
+                //entity.Name = course.Name;
+                db.Entry(entity).State = EntityState.Modified;
                 db.SaveChanges();
                 //return RedirectToAction("Index");
             }
-            ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name", course.OrganizationId);
+            //ViewBag.Name = course.Name;
+            //ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name", course.OrganizationId);
+
+            course.OrganizationLookUps = db.Organizations.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Org_Name }).ToList();
+            course.TrainerLookUps = db.Trainers.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
+            course.CourseLookUps = db.Courses.Select(c => new SelectListItem() { Value = c.Id.ToString(), Text = c.Name }).ToList();
             return View(course);
         }
-
+        public ActionResult CourseAssignToTrainer(List<CourseTrainerVM> Trainers)
+        {
+            var courseTrainers = AutoMapper.Mapper.Map<List<CourseTrainer>>(Trainers);
+            bool IsSaved = courseTrainerManager.Add(courseTrainers);
+            if (IsSaved)
+            {
+                return Json(true);
+            }
+            else
+            {
+                return Json(false);
+            }
+        }
         // GET: Courses/Delete/5
         public ActionResult Delete(int? id)
         {

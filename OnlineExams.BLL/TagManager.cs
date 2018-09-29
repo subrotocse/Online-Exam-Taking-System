@@ -8,28 +8,33 @@ using System.Threading.Tasks;
 
 namespace OnlineExams.BLL
 {
-   public class TagManager
+   public class TagManager:BaseManager<Tag>
     {
-        TagRepository _tagRepository = new TagRepository();
-        public bool Add(Tag entity)
+        //TagRepository _tagRepository = new TagRepository();
+
+        public TagManager() : base(new TagRepository())
         {
-            return _tagRepository.Add(entity);
         }
-        public bool Remove(Tag entity)
-        {
-            return _tagRepository.Remove(entity);
-        }
-        public bool Update(Tag entity)
-        {
-            return _tagRepository.Update(entity);
-        }
-        public List<Tag> GetAll()
-        {
-            return _tagRepository.GetAll();
-        }
-        public Tag GetById(int? id)
-        {
-            return _tagRepository.GetById(id);
-        }
+
+        //public bool Add(Tag entity)
+        //{
+        //    return _tagRepository.Add(entity);
+        //}
+        //public bool Remove(Tag entity)
+        //{
+        //    return _tagRepository.Remove(entity);
+        //}
+        //public bool Update(Tag entity)
+        //{
+        //    return _tagRepository.Update(entity);
+        //}
+        //public List<Tag> GetAll()
+        //{
+        //    return _tagRepository.GetAll();
+        //}
+        //public Tag GetById(int? id)
+        //{
+        //    return _tagRepository.GetById(id);
+        //}
     }
 }

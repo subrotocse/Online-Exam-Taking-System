@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseManager.cs" />
     <Compile Include="CourseManager.cs" />
+    <Compile Include="CourseTrainerManager.cs" />
     <Compile Include="ExamManager.cs" />
     <Compile Include="OrganizationManager.cs" />
     <Compile Include="ParticipantManager.cs" />

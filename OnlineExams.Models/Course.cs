@@ -16,7 +16,7 @@ namespace OnlineExams.Models
         public string CourseOutLine { get; set; } 
         public int OrganizationId { get; set; }
         public virtual Organization Organization { get; set; }
-        public virtual List<CourseTrainer> CourseTrainers { get; set; }
+        public virtual ICollection<CourseTrainer> CourseTrainers { get; set; }
         public virtual List<CourseTag>CourseTags { get; set; }
         public virtual List<Exam> Exams { get; set; }
         public virtual List<Batch> Batches { get; set; }

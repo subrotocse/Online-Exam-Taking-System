@@ -259,6 +259,7 @@ E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-Syste
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\roslyn\VBCSCompiler.exe
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\roslyn\VBCSCompiler.exe.config
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\Antlr3.Runtime.dll
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\AutoMapper.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\EntityFramework.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\EntityFramework.SqlServer.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\Microsoft.AI.Agent.Intercept.dll
@@ -276,6 +277,7 @@ E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-Syste
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\OnlineExams.BLL.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\OnlineExams.Models.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Diagnostics.DiagnosticSource.dll
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.ValueTuple.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Helpers.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Mvc.dll
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Optimization.dll
@@ -289,15 +291,18 @@ E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-Syste
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\OnlineExam.DataContext.dll.config
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\OnlineExams.BLL.pdb
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\OnlineExams.Models.pdb
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\AutoMapper.pdb
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\AutoMapper.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\EntityFramework.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\EntityFramework.SqlServer.xml
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.ValueTuple.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Helpers.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Mvc.xml
-E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Optimization.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Razor.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.WebPages.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.WebPages.Deployment.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.WebPages.Razor.xml
+E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Web.Optimization.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\Newtonsoft.Json.xml
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\Antlr3.Runtime.pdb
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExamApp\bin\System.Diagnostics.DiagnosticSource.xml

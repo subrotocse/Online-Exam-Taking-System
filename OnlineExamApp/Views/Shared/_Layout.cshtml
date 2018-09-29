@@ -17,17 +17,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Online Exam System", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Organization<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Create Organization", "Create", "Organizations")</li>
+                            <li>@Html.ActionLink("Search Organization", "SearchOrganization", "Organizations")</li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Course<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Course Entry", "Create", "Courses")</li>
+                            <li>@Html.ActionLink("Course Search", "Index", "Courses")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Batch", "Create", "Batches")</li>
+                    <li>@Html.ActionLink("Participant", "Create", "Participants")</li>
+                    <li>@Html.ActionLink("Trainer", "Create", "Trainers")</li>
+                    <li>@Html.ActionLink("Exam", "Create", "Exams")</li>
+
                 </ul>
             </div>
+
         </div>
     </div>
+       
     <div class="container body-content">
         @RenderBody()
         <hr />

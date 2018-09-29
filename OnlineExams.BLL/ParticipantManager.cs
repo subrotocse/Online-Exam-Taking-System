@@ -8,28 +8,32 @@ using System.Threading.Tasks;
 
 namespace OnlineExams.BLL
 {
-    public class ParticipantManager
+    public class ParticipantManager:BaseManager<Participant>
     {
-        ParticipantRepository _participantRepository = new ParticipantRepository();
-        public bool Add(Participant entity)
+        public ParticipantManager() : base(new ParticipantRepository())
         {
-            return _participantRepository.Add(entity);
         }
-        public bool Update(Participant entity)
-        {
-            return _participantRepository.Update(entity);
-        }
-        public List<Participant> GetAll()
-        {
-            return _participantRepository.GetAll();
-        }
-        public Participant GetById(int? id)
-        {
-            return _participantRepository.GetById(id);
-        }
-        public bool Remove(Participant entity)
-        {
-            return _participantRepository.Remove(entity);
-        }
+
+        //ParticipantRepository _participantRepository = new ParticipantRepository();
+        //public bool Add(Participant entity)
+        //{
+        //    return _participantRepository.Add(entity);
+        //}
+        //public bool Update(Participant entity)
+        //{
+        //    return _participantRepository.Update(entity);
+        //}
+        //public List<Participant> GetAll()
+        //{
+        //    return _participantRepository.GetAll();
+        //}
+        //public Participant GetById(int? id)
+        //{
+        //    return _participantRepository.GetById(id);
+        //}
+        //public bool Remove(Participant entity)
+        //{
+        //    return _participantRepository.Remove(entity);
+        //}
     }
 }

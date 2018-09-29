@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="BaseRepository.cs" />
     <Compile Include="CourseRepository.cs" />
+    <Compile Include="CourseTrainerRepository.cs" />
     <Compile Include="ExamRepository.cs" />
     <Compile Include="OrganizationRepository.cs" />
     <Compile Include="ParticipantRepository.cs" />

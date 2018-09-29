@@ -57,7 +57,7 @@ namespace OnlineExamApp.Controllers
                 AddImages(organization);
                 db.Organizations.Add(organization);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("SearchOrganization");
             }
 
             return View(organization);
@@ -81,27 +81,35 @@ namespace OnlineExamApp.Controllers
         {
             var organizations = from m in _organizationManager.GetAll()
                                 select m;
-            if (org_name != "")
+            if (!String.IsNullOrEmpty(org_name))
             {
-                organizations = organizations.Where(s => s.Org_Name.Contains(org_name));
+                organizations = organizations.Where(s => s.Org_Name.Contains(org_name)
+                                                    ||s.Org_Name.ToLower().Contains(org_name)
+                );
             }
-            if (address != "")
+            if (!String.IsNullOrEmpty(address))
             {
-                organizations = organizations.Where(s => s.Address.Contains(address));
+                organizations = organizations.Where(s => s.Address.Contains(address)
+                                        || s.Address.ToLower().Contains(address)
+                );
             }
-            if (org_code != "")
+            if (!String.IsNullOrEmpty(org_code))
             {
-                organizations = organizations.Where(s => s.Org_Code.Contains(org_code));
+                organizations = organizations.Where(s => s.Org_Code.Contains(org_code)
+                 || s.Org_Code.ToLower().Contains(org_code)
+                );
             }
-            if (contactNo != "")
+            if (!String.IsNullOrEmpty(contactNo))
             {
-                organizations = organizations.Where(s => s.ContactNo.Contains(contactNo));
+                organizations = organizations.Where(s => s.ContactNo.Contains(contactNo)
+                 || s.ContactNo.ToLower().Contains(contactNo)
+                );
             }
             return View(organizations);
         }
         //public JsonResult GetOrganizationCode(string org_code)
-        //{
-        //    var orgCode = db.Organizations.Where(x => x.Org_Code.Contains(org_code));
+        ////{
+        //    var orgCode = db.Organizations.Select(c => c.Org_Code);
         //    return Json(orgCode, JsonRequestBehavior.AllowGet);
         //}
         // GET: Organizations/Edit/5

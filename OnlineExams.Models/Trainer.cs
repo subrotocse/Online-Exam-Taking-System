@@ -24,6 +24,6 @@ namespace OnlineExams.Models
         [NotMapped]
         public HttpPostedFileBase Logo { get; set; }
        
-        public virtual List<CourseTrainer> CourseTrainers { get; set; } 
+        public virtual ICollection<CourseTrainer> CourseTrainers { get; set; } 
     }
 }

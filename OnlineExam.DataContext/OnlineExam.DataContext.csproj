@@ -51,6 +51,18 @@
     <Compile Include="Migrations\201809160952197_Initial.Designer.cs">
       <DependentUpon>201809160952197_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809181947243_Add_CourseTrainer.cs" />
+    <Compile Include="Migrations\201809181947243_Add_CourseTrainer.Designer.cs">
+      <DependentUpon>201809181947243_Add_CourseTrainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809251931523_addIslead_property.cs" />
+    <Compile Include="Migrations\201809251931523_addIslead_property.Designer.cs">
+      <DependentUpon>201809251931523_addIslead_property.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809281914367_Change_ExamdurationType.cs" />
+    <Compile Include="Migrations\201809281914367_Change_ExamdurationType.Designer.cs">
+      <DependentUpon>201809281914367_Change_ExamdurationType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="OnlineExamDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +80,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201809160952197_Initial.resx">
       <DependentUpon>201809160952197_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809181947243_Add_CourseTrainer.resx">
+      <DependentUpon>201809181947243_Add_CourseTrainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809251931523_addIslead_property.resx">
+      <DependentUpon>201809251931523_addIslead_property.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809281914367_Change_ExamdurationType.resx">
+      <DependentUpon>201809281914367_Change_ExamdurationType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

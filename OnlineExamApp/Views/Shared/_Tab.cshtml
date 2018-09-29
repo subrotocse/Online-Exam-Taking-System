@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Online Exam</title>
+
+        <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+        <script src="~/Scripts/jquery-3.3.1.js"></script>
+        <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+        <style>
+            .panel.with-nav-tabs .panel-heading {
+                padding: 5px 5px 0 5px;
+            }
+
+            .panel.with-nav-tabs .nav-tabs {
+                border-bottom: none;
+            }
+
+            .panel.with-nav-tabs .nav-justified {
+                margin-bottom: -1px;
+            }
+
+            .with-nav-tabs.panel-primary .nav-tabs > li > a,
+            .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+                color: #fff;
+            }
+
+                .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+                .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+                .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+                .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+                .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+                    color: #fff;
+                    background-color: #3071a9;
+                    border-color: transparent;
+                }
+
+            .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+            .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+                color: #428bca;
+                background-color: #fff;
+                border-color: #428bca;
+                border-bottom-color: transparent;
+            }
+        </style>
+        <script type="text/javascript">
+            $(function () {
+                $("#tabs").tabs();
+            });
+        </script>
+    </head>
+    <body >
+        <div id="tabs">
+            <div class="panel with-nav-tabs panel-primary">
+                <div class="panel-heading">
+                    <ul class="nav nav-tabs">
+                        @*<li class="active">@Html.ActionLink("Basic Info",null)</li>
+        <li>@Html.ActionLink("Assign Trainers",null)</li>
+        <li>@Html.ActionLink("Create Exams", null)</li>*@
+                        <li class="active"><a href="#tab1" data-toggle="tab">Basic Info</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Assign Trainers</a></li>
+                        <li><a href="#tab3" data-toggle="tab">Create Exams</a></li>
+                    </ul>
+                </div>
+                <div class="panel-body">
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab1">Primary 1</div>
+                        <div class="tab-pane fade" id="tab2">Primary 2</div>
+                        <div class="tab-pane fade" id="tab3">Primary 3</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        </body>
+    </html> 
+
+    

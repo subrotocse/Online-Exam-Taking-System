@@ -17,6 +17,11 @@ namespace OnlineExam.Repository
             db.Set<T>().Add(entity);
             return db.SaveChanges() > 0;
         }
+        public bool Add(ICollection<T> entities)
+        {
+            db.Set<T>().AddRange(entities);
+            return db.SaveChanges() > 0;
+        }
         public bool Update(T entity)
         {
             db.Entry(entity).State = EntityState.Modified;
@@ -40,11 +45,5 @@ namespace OnlineExam.Repository
             return db.Set<T>().Find(id);
 
         }
-
-
-
-
-
-
     }
 }

@@ -1,0 +1,233 @@
+﻿@model OnlineExams.Models.Batch
+
+@{
+    //ViewBag.Title = "Edit";
+}
+
+@*<h2>Edit</h2>*@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Exam</title>
+
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <style>
+        .panel.with-nav-tabs .panel-heading {
+            padding: 5px 5px 0 5px;
+        }
+
+        .panel.with-nav-tabs .nav-tabs {
+            border-bottom: none;
+        }
+
+        .panel.with-nav-tabs .nav-justified {
+            margin-bottom: -1px;
+        }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            color: #fff;
+        }
+
+            .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+            .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+            .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+                color: #fff;
+                background-color: #3071a9;
+                border-color: transparent;
+            }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+            color: #428bca;
+            background-color: #fff;
+            border-color: #428bca;
+            border-bottom-color: transparent;
+        }
+    </style>
+
+</head>
+<body>
+    <h2 style="color:green" id="courseName">Batch No:@Model.BatchNo</h2>
+    <div class="col-md-offset-9">
+        @*<h3>@Html.ActionLink("< Search", "Index")</h3>*@
+    </div>
+    <div id="tabs">
+        <div class="panel with-nav-tabs panel-primary">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    @*<li class="active">@Html.ActionLink("Basic Info",null)</li>
+                        <li>@Html.ActionLink("Assign Trainers",null)</li>
+                        <li>@Html.ActionLink("Create Exams", null)</li>*@
+                    <li class="active"><a href="#tab1" data-toggle="tab">Basic Info</a></li>
+                    <li><a href="#tab2" data-toggle="tab">Assign Participants</a></li>
+                    <li><a href="#tab3" data-toggle="tab">Assign Trainers</a></li>
+                    <li><a href="#tab4" data-toggle="tab">Schedule Exams</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+
+                    <div class="tab-pane fade in active" id="tab1">
+                        @using (Ajax.BeginForm("Edit", "Batches", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "batchUpdateSuccess", OnFailure = "batchUpdateFail" }))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="form-horizontal">
+                                
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.BatchNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.BatchNo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.BatchNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="tab2">
+
+
+                    </div>
+                    <div class="tab-pane fade" id="tab3">
+
+                    </div>
+                    <div class="tab-pane fade" id="tab4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Batch</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BatchNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.BatchNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.BatchNo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>*@
+
+@section Scripts {
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(function () {
+            $("#tabs").tabs();
+        });
+        function batchUpdateSuccess() {
+            alert("Batch Update Successfully");
+        }
+        function batchUpdateFail(response) {
+            alert("Batch Update Failed");
+        }
+
+    </script>
+
+}

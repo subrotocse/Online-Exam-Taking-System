@@ -8,28 +8,34 @@ using System.Threading.Tasks;
 
 namespace OnlineExams.BLL
 {
-   public class ExamManager
+   public class ExamManager:BaseManager<Exam>
     {
-        ExamRepository _examRepository = new ExamRepository();
-        public bool Add(Exam entity)
+        //ExamRepository _examRepository = new ExamRepository();
+
+        public ExamManager() : base(new ExamRepository())
         {
-            return _examRepository.Add(entity);
+
         }
-        public bool Remove(Exam entity)
-        {
-            return _examRepository.Remove(entity);
-        }
-        public bool Update(Exam entity)
-        {
-            return _examRepository.Update(entity);
-        }
-        public List<Exam> GetAll()
-        {
-            return _examRepository.GetAll();
-        }
-        public Exam GetById(int? id)
-        {
-            return _examRepository.GetById(id);
-        }
+
+        //public bool Add(Exam entity)
+        //{
+        //    return _examRepository.Add(entity);
+        //}
+        //public bool Remove(Exam entity)
+        //{
+        //    return _examRepository.Remove(entity);
+        //}
+        //public bool Update(Exam entity)
+        //{
+        //    return _examRepository.Update(entity);
+        //}
+        //public List<Exam> GetAll()
+        //{
+        //    return _examRepository.GetAll();
+        //}
+        //public Exam GetById(int? id)
+        //{
+        //    return _examRepository.GetById(id);
+        //}
     }
 }

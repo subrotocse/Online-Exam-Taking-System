@@ -1,83 +1,290 @@
-﻿@model OnlineExams.Models.Course
-
+﻿@model OnlineExams.Models.View_Model.CourseEditVM
 @{
+    /**/
+
     ViewBag.Title = "Edit";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Exam</title>
 
-<h2>Edit</h2>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+    <style>
+        .panel.with-nav-tabs .panel-heading {
+            padding: 5px 5px 0 5px;
+        }
 
+        .panel.with-nav-tabs .nav-tabs {
+            border-bottom: none;
+        }
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Course</h4>
-    <div>
-        @Html.ActionLink("< Search", "Index")
-    </div><hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Id)
-    <div class="form-group">
-        @Html.LabelFor(model => model.OrganizationId, "OrganizationId", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("OrganizationId", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.OrganizationId, "", new { @class = "text-danger" })
+        .panel.with-nav-tabs .nav-justified {
+            margin-bottom: -1px;
+        }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+            color: #fff;
+        }
+
+            .with-nav-tabs.panel-primary .nav-tabs > .open > a,
+            .with-nav-tabs.panel-primary .nav-tabs > .open > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > .open > a:focus,
+            .with-nav-tabs.panel-primary .nav-tabs > li > a:hover,
+            .with-nav-tabs.panel-primary .nav-tabs > li > a:focus {
+                color: #fff;
+                background-color: #3071a9;
+                border-color: transparent;
+            }
+
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:hover,
+        .with-nav-tabs.panel-primary .nav-tabs > li.active > a:focus {
+            color: #428bca;
+            background-color: #fff;
+            border-color: #428bca;
+            border-bottom-color: transparent;
+        }
+    </style>
+
+</head>
+<body>
+    <h2 style="color:green" id="courseName">Course Name:@Model.Name</h2>
+    <div class="col-md-offset-9">
+        <h3>@Html.ActionLink("< Search", "Index")</h3>
+    </div>
+    <div id="tabs">
+        <div class="panel with-nav-tabs panel-primary">
+            <div class="panel-heading">
+                <ul class="nav nav-tabs">
+                    @*<li class="active">@Html.ActionLink("Basic Info",null)</li>
+                        <li>@Html.ActionLink("Assign Trainers",null)</li>
+                        <li>@Html.ActionLink("Create Exams", null)</li>*@
+                    <li class="active"><a href="#tab1" data-toggle="tab">Basic Info</a></li>
+                    <li><a href="#tab2" data-toggle="tab">Assign Trainers</a></li>
+                    <li><a href="#tab3" data-toggle="tab">Create Exams</a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="tab-content">
+
+                    <div class="tab-pane fade in active" id="tab1">
+                        @using (Ajax.BeginForm("Edit", "Courses", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "courseUpdateSuccess", OnFailure = "courseUpdateFail" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="form-horizontal">
+                                @*<h2 style="color:green" id="courseName">Course Name :@Model.Name</h2>
+                                    <div class="col-md-offset-9">
+                                        @Html.ActionLink("< Search", "Index")
+                                    </div>*@<hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.Id)
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OrganizationId, "Organization", htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.DropDownList("OrganizationId", Model.OrganizationLookUps, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.OrganizationId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CourseCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CourseCode, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CourseCode, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CourseDuration, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.CourseDuration, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.CourseDuration, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CourseOutLine, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.TextAreaFor(model => model.CourseOutLine, new { @class = "ckeditor" })
+                                        @Html.ValidationMessageFor(model => model.CourseOutLine, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" id="courseUpdate" value="Update" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="tab2">
+                        @using (Ajax.BeginForm("CourseAssignToTrainer", "Courses", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "courseAssignSuccess", OnFailure = "courseAssignFail" }))
+                        {
+
+                            <div class="form-group">
+                                @Html.Label("TrainerDropdown", "Trainer", new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("TrainerDropDown", Model.TrainerLookUps, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("LeadTrainer", "Lead?", new { @class = "col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.RadioButton("LeadTrainer", "true", false)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-6 col-md-5">
+                                    <input type="button" id="addTrainerButton" value="Add >" class="btn btn-default" />
+                                </div>
+                            </div>
+                            <div class="form-horizontal">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Trainer
+                                            </th>
+                                            <th>
+                                                Lead Trainer?
+                                            </th>
+                                            <th>
+                                                Action
+                                            </th>
+                                        </tr>
+
+                                    </thead>
+                                    <tbody id="tbTrainer"></tbody>
+                                </table>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-11 col-md-5">
+                                    <input type="submit" value="Assign" class="btn btn-default" />
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="tab-pane fade" id="tab3">
+                        @using (Ajax.BeginForm("Edit", "Courses", new AjaxOptions() { HttpMethod = "POST", OnSuccess = "courseUpdateSuccess", OnFailure = "courseUpdateFail" }))
+                        {
+                            @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                           
+                                    <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OrganizationId, "Organization", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("OrganizationId", Model.OrganizationLookUps, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.OrganizationId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.Label("Course", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.DropDownList("CourseId", Model.CourseLookUps, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>
+                           
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" id="courseUpdate" value="Save" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.CourseCode, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CourseCode, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CourseCode, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CourseDuration, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CourseDuration, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CourseDuration, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Credit, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Credit, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Credit, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CourseOutLine, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.CourseOutLine, new { @class = "ckeditor" })
-            @Html.ValidationMessageFor(model => model.CourseOutLine, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Update" class="btn btn-default" />
-        </div>
-    </div>
-</div>
-}
-
+</body>
+</html>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $("#tabs").tabs();
+        });
+        //Course Update
+        $('#courseUpdate').click(function () {
+            var courseNames = $('#Name').val();
+            $('#courseName').empty();
+            $('#courseName').append(courseNames);
+        });
+        //Assign trainer
+        var index = 0;
+        $('#addTrainerButton').click(function () {
+            var trainer = getTrainer();
+
+            var tr = "<tr>";
+
+            var td = "<td><input name='Trainers[" + index + "].trainerid' type='hidden' value='" + trainer.TrainerId + "'>" + "<input name='Trainers[" + index + "].isLead' type='hidden' value='" + trainer.IsLead + "'>"+ "<input name='Trainers[" + index + "].courseid' type='hidden' value='" + trainer.CourseId + "'>" + "<input name='Trainers[" + index + "].Name' type='hidden' value='" + trainer.TrainerName + "'>" + trainer.TrainerName + "</td>"
+                
+            td += "<td><input type='radio'/></td>"
+            //td += "<td><input name='Trainers[" + index + "]' type='radio' value='" + trainer.IsLead + "'/>" + trainer.IsLead + "</td>"
+            td += "<td></td>"
+            tr += td + "</tr>";
+
+         
+            $('#tbTrainer').append(tr);
+            ++index;
+          
+        })
+
+        function getTrainer() {
+
+            var trainerId = $('#TrainerDropDown').val();
+            var trainerName = $('#TrainerDropDown :selected').text();
+            var isLead = $('#LeadTrainer').is(':checked');
+            var courseId=@Model.Id;
+
+            var trainer = {
+                TrainerId: trainerId,
+                TrainerName: trainerName,
+                CourseId: courseId,
+                IsLead: isLead
+
+            }
+
+            return trainer;
+        }
+        function courseUpdateSuccess() {
+            alert("Course Update Successfully");
+        }
+        function courseUpdateFail(response) {
+            alert("Course Update Failed");
+        }
+        function courseAssignSuccess() {
+            alert("Course Assign Successfully");
+        }
+        function courseAssignFail(){
+            alert("Course Assign Fail");
+        }
+
+    </script>
 }

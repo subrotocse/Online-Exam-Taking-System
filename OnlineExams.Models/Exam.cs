@@ -12,7 +12,7 @@ namespace OnlineExams.Models
         public string ExamCode { get; set; }
         public string Topic { get; set; }
         public double FullMarks { get; set; }
-        public DateTime Duration { get; set; }
+        public string Duration { get; set; }
        
         public int CourseId { get; set; }
         public virtual Course Course { get; set; }
