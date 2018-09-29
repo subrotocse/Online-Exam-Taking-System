@@ -157,7 +157,10 @@
     <Compile Include="Controllers\BatchesController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\CourseTrainersController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\ExamsController.cs" />
+=======
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationsController.cs" />
     <Compile Include="Controllers\ParticipantsController.cs" />
@@ -583,8 +586,11 @@
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.js" />
     <Content Include="Scripts\jquery-ui-1.12.1.min.js" />
+<<<<<<< HEAD
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+=======
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -636,11 +642,14 @@
     <Content Include="Views\Participants\Details.cshtml" />
     <Content Include="Views\Participants\Edit.cshtml" />
     <Content Include="Views\Participants\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\Exams\Create.cshtml" />
     <Content Include="Views\Exams\Delete.cshtml" />
     <Content Include="Views\Exams\Details.cshtml" />
     <Content Include="Views\Exams\Edit.cshtml" />
     <Content Include="Views\Exams\Index.cshtml" />
+=======
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

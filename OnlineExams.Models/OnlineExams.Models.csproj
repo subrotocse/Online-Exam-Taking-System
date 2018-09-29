@@ -74,8 +74,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="Trainer.cs" />
+<<<<<<< HEAD
     <Compile Include="View Model\CourseEditVM.cs" />
     <Compile Include="View Model\CourseTrainerVM.cs" />
+=======
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
     <Compile Include="View Model\TrainerCreateVM.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -53,7 +53,10 @@ E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-Syste
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExam.DataContext\obj\Debug\OnlineExam.DataContext.csprojAssemblyReference.cache
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExam.DataContext\obj\Debug\OnlineExam.DataContext.Migrations.Initial.resources
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExam.DataContext\obj\Debug\OnlineExam.DataContext.Migrations.Add_CourseTrainer.resources
+<<<<<<< HEAD
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExam.DataContext\obj\Debug\OnlineExam.DataContext.Migrations.addIslead_property.resources
+=======
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExam.DataContext\obj\Debug\OnlineExam.DataContext.csproj.GenerateResource.cache
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExam.DataContext\obj\Debug\OnlineExam.DataContext.csproj.CoreCompileInputs.cache
 E:\DOT NET\BITM Professional ASP.NET MVC\ProMVC New Git\Online-Exam-Taking-System\OnlineExam.DataContext\obj\Debug\OnlineExam.DataContext.csproj.CopyComplete

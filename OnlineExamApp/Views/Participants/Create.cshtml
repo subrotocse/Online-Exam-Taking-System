@@ -1,12 +1,21 @@
 ﻿@model OnlineExams.Models.Participant
 
 @{
+<<<<<<< HEAD
 /**/
 
 //ViewBag.Title = "Create";
 }
 
 @*<h2>Create</h2>*@
+=======
+    /**/
+
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
 
 
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -14,9 +23,14 @@
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">
+<<<<<<< HEAD
     <h3>Participant Entry</h3>
     <hr />
     <h3 style="color:green">@ViewBag.Message</h3>
+=======
+    <h4>Participant</h4>
+    <hr />
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
         @Html.Label("Organization", htmlAttributes: new { @class = "control-label col-md-2" })

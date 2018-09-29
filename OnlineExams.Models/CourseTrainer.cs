@@ -17,7 +17,11 @@ namespace OnlineExams.Models
         [Column(Order = 2)]
         public int TrainerId { get; set; }
         public virtual Course Course { get; set; }
+<<<<<<< HEAD
         public bool IsLead { get; set; }
+=======
+      
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
         public virtual Trainer Trainer { get; set; }
     }
 }

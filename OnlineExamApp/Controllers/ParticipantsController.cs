@@ -65,6 +65,7 @@ namespace OnlineExamApp.Controllers
             {
                 AddImages(participant);
                 db.Participants.Add(participant);
+<<<<<<< HEAD
                 bool IsSaved = db.SaveChanges() > 0;
                 if(IsSaved)
                 {
@@ -75,6 +76,10 @@ namespace OnlineExamApp.Controllers
                     ViewBag.Message = "Participant Saved Failed";
                 }
                 //return RedirectToAction("Index");
+=======
+                db.SaveChanges();
+                return RedirectToAction("Index");
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
             }
 
             var defaultSelectListItems = new List<SelectListItem>()

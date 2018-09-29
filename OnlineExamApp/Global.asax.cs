@@ -22,6 +22,7 @@ namespace OnlineExamApp
             Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<TrainerCreateVM, Trainer>();
+<<<<<<< HEAD
                 cfg.CreateMap<Course,CourseEditVM>();
                 cfg.CreateMap<CourseEditVM,Course>();
                 cfg.CreateMap<CourseTrainerVM,CourseTrainer>();
@@ -29,6 +30,11 @@ namespace OnlineExamApp
                 //cfg.CreateMap<Trainer, TrainerCreateVM>();
 
 
+=======
+                //cfg.CreateMap<Trainer, TrainerCreateVM>();
+               
+                
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
             });
         }
     }

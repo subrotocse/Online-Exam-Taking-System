@@ -40,6 +40,7 @@ namespace OnlineExamApp.Controllers
         // GET: Batches/Create
         public ActionResult Create()
         {
+<<<<<<< HEAD
             //ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name");
             var defaultSelectListItems = new List<SelectListItem>()
             {
@@ -47,6 +48,9 @@ namespace OnlineExamApp.Controllers
             };
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name");
             ViewBag.CourseId = defaultSelectListItems;
+=======
+            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name");
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
             return View();
         }
 
@@ -60,6 +64,7 @@ namespace OnlineExamApp.Controllers
             if (ModelState.IsValid)
             {
                 db.Batches.Add(batch);
+<<<<<<< HEAD
                 bool IsSaved = db.SaveChanges() > 0;
                 if (IsSaved)
                 {
@@ -74,6 +79,13 @@ namespace OnlineExamApp.Controllers
             };
             ViewBag.OrganizationId = new SelectList(db.Organizations, "Id", "Org_Name");
             ViewBag.CourseId = defaultSelectListItems;
+=======
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", batch.CourseId);
+>>>>>>> bec26b27843d4effc520e9a64f21d64bda4cf0ee
             return View(batch);
         }
 
